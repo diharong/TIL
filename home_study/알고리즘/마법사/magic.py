@@ -21,3 +21,6 @@ for i in range(N):
             if max_value < S:
                 max_value = S
 print(f'{max_value}')
+
+
+
