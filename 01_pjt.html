@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>포트폴리오</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* 기본 설정 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            color: #e0e0e0;
+            line-height: 1.6;
+            background: url('https://source.unsplash.com/1600x900/?programming-code') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        /* 헤더 */
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #e0e0e0;
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        /* 내비게이션 */
+        nav {
+            display: flex;
+            justify-content: center;
+            padding: 15px 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+            position: sticky;
+            top: 70px;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            margin: 0 25px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            position: relative;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            padding: 5px 0;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0%;
+            height: 3px;
+            background-color: #e0e0e0;
+            bottom: -5px;
+            left: 50%;
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        /* 메인 컨텐츠 */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+            background-color: rgba(0, 0, 0, 0.7); /* 컨텐츠를 더 잘 보이게 하도록 배경 색상 추가 */
+            border-radius: 15px;
+        }
+
+        section {
+            margin-bottom: 80px;
+        }
+
+        section h2 {
+            font-size: 2.8rem;
+            color: #e0e0e0;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        section p {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #cccccc;
+            margin-bottom: 40px;
+        }
+
+        /* 개인 정보 섹션 */
+        #about {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #about h2 {
+            font-size: 2.8rem;
+        }
+
+        #about p {
+            font-size: 1.2rem;
+            text-align: center;
+            color: #cccccc;
+        }
+
+        #about .info {
+            font-size: 1.1rem;
+            color: #e0e0e0;
+            margin-top: 20px;
+        }
+
+        #about .info p {
+            margin: 5px 0;
+        }
+
+        #about a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #e0e0e0;
+            color: #0d0d0d;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #about a:hover {
+            background-color: #d5d5d5;
+            color: #0d0d0d;
+        }
+
+        /* 프로젝트 카드 */
+        .projects {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .project {
+            background-color: #1a1a1a;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            width: 300px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .project::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(0,0,0,0.4));
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .project:hover::before {
+            opacity: 1;
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .project h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: #e0e0e0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project p {
+            font-size: 1rem;
+            margin-bottom: 25px;
+            color: #cccccc;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project a {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: #e0e0e0;
+            color: #0d0d0d;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .project a:hover {
+            background-color: #d5d5d5;
+            color: #0d0d0d;
+        }
+
+        /* 연락처 섹션 */
+        #contact {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #e0e0e0;
+            padding: 40px 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        #contact h2 {
+            color: #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        #contact p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+        }
+
+        #contact a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 25px;
+            background-color: #e0e0e0;
+            color: #0d0d0d;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        #contact a:hover {
+            background-color: #d5d5d5;
+            color: #0d0d0d;
+        }
+
+        /* 푸터 */
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px 0;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #999;
+            border-top: 2px solid #333;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 헤더 -->
+    <header>
+        <h1>My Portfolio</h1>
+    </header>
+
+    <!-- 내비게이션 -->
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- 메인 컨텐츠 -->
+    <main>
+        <!-- 개인 정보 섹션 -->
+        <section id="about">
+            <h2>About Me</h2>
+            <p>Hello! I'm Kim Kyeong Min, a Business Administration student with a passion for web development and design.</p>
+            <div class="info">
+                <p><strong>Major:</strong> Business Administration</p>
+                <p><strong>Skills:</strong> updating .... </p>
+                <p><strong>GitHub:</strong> <a href="https://github.com/diharong" target="_blank">github.com/diharong</a></p>
+            </div>
+        </section>
+
+        <!-- 프로젝트 섹션 -->
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="projects">
+                <div class="project">
+                    <h3>Project 1</h3>
+                    <p>A sleek web application built with React and Node.js.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project">
+                    <h3>Project 2</h3>
+                    <p>An advanced e-commerce site developed with Django and Python.</p>
+                    <a href="#">View Project</a>
+                </div>
+                <div class="project">
+                    <h3>Project 3</h3>
+                    <p>A minimalist portfolio website created using HTML, CSS, and JavaScript.</p>
+                    <a href="#">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 연락처 섹션 -->
+        <section id="contact">
+            <h2>Contact Me</h2>
+            <p>Email: diharong01@gmail.com</p>
+            <p>Phone: 010-1234-5678</p>
+            <a href="mailto:diharong01@gmail.com">Get in Touch</a>
+        </section>
+    </main>
+
+    <!-- 푸터 -->
+    <footer>
+        <p>&copy; 2024 My Portfolio. All rights reserved.</p>
+    </footer>
+</body>
+</html>
